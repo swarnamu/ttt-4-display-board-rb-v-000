@@ -142,7 +142,16 @@ describe "#display_board in 'lib/display_board.rb" do
 
       # Can you copy the syntax of the tests above to write a test for a board
       # entirely filled with Xs?"
-      #board = ["X", "X", "X", "X", "O", "O", "X", "O", "O"]
+      board = ["X", "X", "X", "X", "O", "O", "X", "O", "O"]
+
+      output = capture_puts{ display_board(board) }
+      rows = output.split("\n")
+
+      expect(rows[0]).to eq(" X | X | X ")
+      expect(rows[1]).to eq("-----------")
+      expect(rows[2]).to eq(" X | O | O ")
+      expect(rows[3]).to eq("-----------")
+      expect(rows[4]).to eq(" X | O | O ")
 
 
       # Define the board with values that should create the desired output
